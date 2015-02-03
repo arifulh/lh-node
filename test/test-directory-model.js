@@ -12,26 +12,27 @@ var request = require('request'),
   }()),
   directory = require('../models/directory');
 
-exports['directory - initial state'] =  function (test) {
-  test.equal(directory.getAllChannels().channels['channel-one'], null, 'channel list should be empty');
-  test.equal(directory.getAllChannels().channelCount, 0, 'channel count should be 0.');
-  test.equal(directory.getChannelUsers('channel-one').users, null, 'channel user list should be empty');
-  done(test);
-};
-
-exports['directory - adding channel'] =  function (test) {
-  directory.addChannel('channel-one');
-  test.equal(directory.getAllChannels().channels['channel-one'], true, 'channel added to directory');
-  test.equal(directory.getAllChannels().channelCount, 1, 'channel count should be 1.');
-  test.equal(directory.getChannelUsers('channel-one').userCount, 0, 'channel user count should be initalized to 0.');
-  done(test);
-};
-
-exports['directory - reset state'] =  function (test) {
+exports['directory - reset state'] = function (test) {
   directory.resetDirectory();
   test.equal(directory.getAllChannels().channels['channel-one'], null, 'channel list should be empty');
   test.equal(directory.getAllChannels().channelCount, 0, 'channel count should be 0.');
   test.equal(directory.getChannelUsers('channel-one').users, null, 'channel user list should be empty');
+  done(test);
+};
+
+exports['directory - initial state'] = function (test) {
+  directory.resetDirectory();
+  test.equal(directory.getAllChannels().channels['channel-one'], null, 'channel list should be empty');
+  test.equal(directory.getAllChannels().channelCount, 0, 'channel count should be 0.');
+  test.equal(directory.getChannelUsers('channel-one').users, null, 'channel user list should be empty');
+  done(test);
+};
+
+exports['directory - adding channel'] = function (test) {
+  directory.addChannel('channel-one');
+  test.equal(directory.getAllChannels().channels['channel-one'], true, 'channel added to directory');
+  test.equal(directory.getAllChannels().channelCount, 1, 'channel count should be 1.');
+  test.equal(directory.getChannelUsers('channel-one').userCount, 0, 'channel user count should be initalized to 0.');
   done(test);
 };
 
@@ -46,7 +47,7 @@ exports['directory - adding duplicate channel'] =  function (test) {
   done(test);
 };
 
-exports['directory - adding multiple channels'] =  function (test) {
+exports['directory - adding multiple channels'] = function (test) {
   directory.resetDirectory();
   directory.addChannel('channel-one');
   directory.addChannel('channel-two');
@@ -63,7 +64,7 @@ exports['directory - adding multiple channels'] =  function (test) {
   done(test);
 };
 
-exports['directory - removing channels from directory '] =  function (test) {
+exports['directory - removing channels from directory'] = function (test) {
   directory.resetDirectory();
   test.equal(directory.getAllChannels().channelCount, 0, 'channel count should be 0.');
 
@@ -87,7 +88,7 @@ exports['directory - removing channels from directory '] =  function (test) {
   done(test);
 };
 
-exports['directory - find channel in directory '] =  function (test) {
+exports['directory - find channel in directory'] =  function (test) {
   directory.resetDirectory();
   directory.addChannel('channel-two');
   test.equal(directory.findChannel('channel-two'), true, 'channel-two should be in directory');
