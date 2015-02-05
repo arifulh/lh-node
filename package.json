@@ -7,8 +7,8 @@
     "request": "^2.53.0"
   },
   "scripts": {
-    "start": "nohup forever -w index.js 0<&- &>/dev/null &",
-    "stop": "killall node",
+    "start": "sh start-server.sh",
+    "stop": "sh stop-server.sh",
     "test": "node test/test-runtests.js"
   },
   "devDependencies": {
