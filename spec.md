@@ -1,5 +1,9 @@
 INPROGRESS
 ===============
+- Channel should be able to broadcast sync signal
+- Channel should be able to broadcast next-song signal
+- Channel should be able to broadcast new-song signal
+- Channel should be able to broadcast messages
 
 
 TODO
@@ -11,3 +15,4 @@ TODO
 - User can subscribe to channel
 - User can leave channel
 - User can create channel
+- 
