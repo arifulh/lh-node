@@ -7,7 +7,6 @@ var request = require('request'),
       test.done();
       remaining++;
       if (remaining < Object.keys(exports).length) { return; }
-      setTimeout(function () { process.kill(); }, 1);
     };
   }()),
   directory = require('../models/directory');
